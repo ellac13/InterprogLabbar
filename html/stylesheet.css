@@ -1,0 +1,23 @@
+html, body {
+	height: 100%;
+}
+div.container {
+	background-color: green;
+	background-image: "../images/family.jpg";
+	width: 100%;
+	height: 100%;
+	display: table;
+}
+div.header {
+	background-color: yellow;
+	width: 100%;
+	height: 3cm;
+	display: table-row;
+}
+div.body {
+	background-color: blue;
+	width: 100%;
+	height: 100%;
+	display: table-row;
+
+}
