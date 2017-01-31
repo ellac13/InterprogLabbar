@@ -5,7 +5,7 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 
 	this.numberOfGuests = 4;
-	this.chosenDishes = new Array();
+	this.menu = new Array();
 
 	this.setNumberOfGuests = function(num) {
 		if (Number.isInteger(num)) {
@@ -23,27 +23,46 @@ var DinnerModel = function() {
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
+		return this.menu[type];
 		//TODO Lab 2
 	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
+		return this.menu;
 		//TODO Lab 2
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
+		var ingredients = new Array();
+		for (var key in this.menu) {
+			for (var i = 0; i < this.menu[key].length; i++) {
+				ingredients.push(this.menu[key][i]);
+			};
+		};
+		return ingredients;
 		//TODO Lab 2
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
+		//TODO::FIXA
+		var ingredients = this.getAllIngredients();
+		var sum = 0;
+		for (var i = 0; i < ingredients.length; i++) {
+			sum += ingredients[i]['price'] * ingredients[i]['quantity'] * this.numberOfGuests
+		};
+		return sum;
 		//TODO Lab 2
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
+		//TODO::Iterera igen alla dishes, hitta id
+		var dish = dishes[id];
+		this.menu[dish['type']] = dish;
 		//TODO Lab 2 
 	}
 
