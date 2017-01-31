@@ -5,6 +5,7 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 
 	this.numberOfGuests = 4;
+	this.chosenDishes = new Array();
 
 	this.setNumberOfGuests = function(num) {
 		if (Number.isInteger(num)) {

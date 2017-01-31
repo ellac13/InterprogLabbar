@@ -9,6 +9,7 @@ var ExampleView = function (container, model) {
 
 	//document.getElementById('numberOfGuests').innerHTML = "whatever liksom";
 
+
 	this.noOfGuests = model.getNumberOfGuests();
 	
 	this.numberOfGuests.html(this.noOfGuests);
