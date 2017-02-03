@@ -10,12 +10,14 @@ div.container {
 	flex: 1;
 	align-items: stretch;
 	flex-direction: column;
-	background-image: url("images/family.jpg");
+	/*background-image: url("images/family.jpg");*/
 }
 
 div.page-header {
 	background: rgba(255,178,0,0.3);
 	margin-top: 0;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 div.body {
@@ -29,7 +31,8 @@ div.body {
 
 div.selectedDishes {
 	width: 5cm;
-	background-color: green;
+	margin-right: 5px;
+	background: rgba(0,0,238,0.5);
 }
 
 div.mainView {
@@ -40,4 +43,16 @@ div.mainView {
 #welcome-textbox{
 	background: rgba(200,200,200,0.7);
 	max-width: 500px;
+}
+
+#selectedDishesTable {
+	width: 100%;
+}
+
+#selectedDishesTable td{
+	background: rgba(0,0,0,0.1);
+}
+
+.rightAlignText {
+	text-align: right;
 }

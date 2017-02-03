@@ -32,9 +32,39 @@
 			</div>
 		</div>
 		<div class="body" id="view234" >
-			<div class="selectedDishes">left</div>
-			<div class="mainView" id="view3" style="display:none">main</div>
-			<div class="mainView" id="view4">main</div>
+			<div class="selectedDishes">
+				<h3>My dinner</h3>
+				<div>
+				<p>Number of guests: <span id="numberOfGuests">foo</span></p>
+				</div>
+				<div>
+	         		<button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+					<button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+				</div>
+				<br>
+				
+				<table id="selectedDishesTable">
+					<tr style="background: rgba(0,0,0,0.3)">
+						<th>Dish</th>
+						<th class="rightAlignText">Cost</th>
+					</tr>
+					<tr>
+						<td>Meatballs</td>
+						<td class="rightAlignText">10</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td class="rightAlignText">Total cost: <span id="totalCost">foo</span></td>
+					</tr>
+				</table>
+				<br>
+				<button class="btn" id="confimation-button" style="">Confirm dinner</button>
+			</div>
+
+			<div class="mainView" id="view3">
+				main
+			</div>
+			<div class="mainView" id="view4" style="display:none">main</div>
 		</div>
 		<div class="body" id="view5" style="display:none"></div>
 		<div class="body" id="view6" style="display:none"></div>
