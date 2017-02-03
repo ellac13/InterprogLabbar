@@ -10,13 +10,12 @@ div.container {
 	flex: 1;
 	align-items: stretch;
 	flex-direction: column;
-	background-color: black;
+	background-image: url("images/family.jpg");
 }
 
-div.header {
-	width: 100%;
-	height: 2cm;
-	background-color: lightblue;
+div.page-header {
+	background: rgba(255,178,0,0.3);
+	margin-top: 0;
 }
 
 div.body {
@@ -25,6 +24,7 @@ div.body {
 	flex: 1;
 	align-items: stretch;
 	flex-direction: row;
+	background: rgba(255,255,0,0.0);
 }
 
 div.selectedDishes {
@@ -35,4 +35,9 @@ div.selectedDishes {
 div.mainView {
 	flex: 1;
 	background-color: red;
+}
+
+#welcome-textbox{
+	background: rgba(200,200,200,0.7);
+	max-width: 500px;
 }
