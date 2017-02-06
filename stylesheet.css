@@ -11,6 +11,8 @@ div.container {
 	align-items: stretch;
 	flex-direction: column;
 	/*background-image: url("images/family.jpg");*/
+	max-width: 36cm;
+	margin: auto;
 }
 
 div.page-header {
@@ -100,6 +102,35 @@ div.mainView {
 }
 
 #view4 {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+#view56{
+	display:flex;
+	flex-direction: column;
+
+}
+
+.view56Header {
+	background: rgba(255,178,0,0.3);
+}
+
+#view5{
+	display:flex;
+	flex-direction: column;	
+}
+
+#finalDishSelection{
+	flex: 1;
+}
+
+#printRecipeButton{
+ 	display:block;
+	margin:auto
+}
+
+#view6{
 	overflow-y: auto;
 	overflow-x: hidden;
 }
