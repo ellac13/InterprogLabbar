@@ -31,7 +31,7 @@
 			</div>
 			</div>
 		</div>
-		<div class="body" id="view234" >
+		<div class="body" id="view234" style="display:none">
 			<div class="selectedDishes">
 				<h3>My dinner</h3>
 				<div>
@@ -61,13 +61,99 @@
 				<button class="btn" id="confimation-button" style="">Confirm dinner</button>
 			</div>
 
-			<div class="mainView" id="view3">
-				main
+			<div class="mainView" id="view3" style="display:none">
+				<div class="dishSelectionHeader">
+					<h3>SELECT DISH</h3>
+					<hr>
+					<div id="searchDishBar">
+    					<div class="input-group" id="searchDish">
+      						<input type="text" class="form-control" placeholder="Search for dish...">
+      						<span class="input-group-btn">
+    							<button class="btn btn-default" type="button">Search</button>
+      						</span>
+    					</div><!-- /input-group -->
+
+    					<div class="dropdown">
+ 							<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+   								Dropdown
+    						<span class="caret"></span>
+  							</button>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+								<li><a href="#">Action</a></li>
+							    <li><a href="#">Another action</a></li>
+							    <li><a href="#">Something else here</a></li>
+							    <li role="separator" class="divider"></li>
+							    <li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="selectDishGrid">
+					<div class="row">
+					  <div class="col-sm-12 col-md-3">
+					    <div class="thumbnail">
+					      <img src="images/toast.jpg" alt="Image not found...">
+					      <div class="caption">
+					        <h3>Toast</h3>
+					        <p>Description of toast</p>
+					        <p><a href="#" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Select</a></p>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
 			</div>
-			<div class="mainView" id="view4" style="display:none">main</div>
+			<div class="mainView" id="view4">
+				<div class="row">
+  					<div class="col-sm-12 col-md-6">
+						<div class="thumbnail">
+					      <h2>Toast</h2>
+					      <img src="images/toast.jpg" alt="Image not found...">
+					      <div class="caption">
+					        <p>Description of toast</p>
+					        <button class="btn btn-default" id="backToSelectDishButton" type="button"><span class="glyphicon glyphicon-chevron-left"></span> Back</button>
+					      </div>
+					    </div>
+  					</div>
+  					<div class="col-sm-12 col-md-6">
+  						<div class="thumbnail">
+	  						<h2>Ingredients for 4 people</h2>
+	  						<hr>
+	  						<table id="dishIngredientTable">
+	  							<tr>
+	  								<td>2 kg</td>
+	  								<td>Mjöl</td>
+	  								<td>SEK</td>
+	  								<td>1000</td>
+	  							</tr>
+	  						</table>
+	  						<hr>
+	  						<div>
+	  							<button class="btn btn-default" id="confirmDishButton" type="button">Confirm Dish</button>
+	  							<p style="float:right">Total cost: <span id="dishCost">2000</span> SEK</p>
+	  						</div>
+  						</div>
+  					</div>
+  					<div class="col-sm-12 col-md-6">
+  						<div class="thumbnail">
+  							<h2>Preparations</h2>
+  							<p>blablablablablablabalba blablablablablablabalba blablablablablablabalba blablablablablablabalba blablablablablablabalba blablablablablablabalba blablablablablablabalba</p>
+  						</div>
+  					</div>
+  				</div>
+			</div>
 		</div>
-		<div class="body" id="view5" style="display:none"></div>
-		<div class="body" id="view6" style="display:none"></div>
+		<div class="body" id="view56" style="display:none">
+			<div class="view56Header">
+
+			</div>
+			<div id="view5">
+
+			</div>
+			<div id="view6">
+
+			</div>
+		</div>
 
 
 		<!--<div id="exampleView">
