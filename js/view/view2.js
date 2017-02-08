@@ -21,5 +21,29 @@ var View2 = function (container, model) {
 	}
 	this.confirmButton.click(confirmButtonClick);
 	
+
+
+	this.menu = model.getFullMenu(); //TODO:Implementera currently vald dish
+
+	this.generateViewHTML = function(){
+		var html = '<tr style="background: rgba(0,0,0,0.3)"><th>Dish</th><th class="rightAlignText">Cost</th></tr>';
+		for (var i = 0; i < this.menu.length; i++) {
+			html = html + generateRowHTML(this.menu[i]['name'],this.menu[i]['ingredients']);
+		};
+		return html + '<tr><td></td><td class="rightAlignText">Total cost: <span id="totalCost">' + model.getTotalMenuPrice() + '</span></td></tr>';
+	}
+
+	var generateRowHTML = function(name, ingredients){
+		var price = 0;
+		for (var i = 0; i < ingredients.length; i++) {
+			price += ingredients[i]['quantity'] * ingredients[i]['price'];
+		};
+		console.log(model.getNumberOfGuests());
+		price = price * model.getNumberOfGuests();
+		return '<tr><td>' + name +'</td><td class="rightAlignText">' + price + '</td></tr>';
+	}
+	
+	//Update the dish grid
+	container.find("#selectedDishesTable").html(this.generateViewHTML());
 }
  

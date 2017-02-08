@@ -61,7 +61,7 @@
 				<button class="btn" id="confirmationButton" style="">Confirm dinner</button>
 			</div>
 
-			<div class="mainView" id="view3" style="display:none">
+			<div class="mainView" id="view3">
 				<div class="dishSelectionHeader">
 					<h3>SELECT DISH</h3>
 					<hr>
@@ -100,11 +100,11 @@
 					      </div>
 					    </div>
 					  </div>
-					  <div class="col-sm-12 col-md-3"><div class="thumbnail"><img src="images/image.png"><div class="caption"><h3>Toast</h3><p>blabla</p><p><a href="#" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Select</a></p></div></div></div>
- -->					</div>
+					  <div class="col-sm-12 col-md-3"><div class="thumbnail"><img src="images/image.png"><div class="caption"><h3>Toast</h3><p>blabla</p><p><a href="#" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Select</a></p></div></div></div>-->
+					  </div>
 				</div>
 			</div>
-			<div class="mainView" id="view4">
+			<div class="mainView" id="view4" style="display:none">
 				<div class="row" id="view4Row">
   					<div class="col-sm-12 col-md-6">
 						<div class="thumbnail">
@@ -149,7 +149,7 @@
 				<h2>My dinner: <span id="finalHeaderNumberOfGuests">44</span> people <button class="btn" id="finalHeaderBackButton" style="float:right"><span class="glyphicon glyphicon-chevron-left"></span> Go back and edit dinner</button></h2>
 				
 			</div>
-			<div id="view5">
+			<div id="view5" style="display:none">
 				<div class="row" id="finalDishSelection">
 				  <div class="col-sm-12 col-md-4 col-lg-3">
 				    <a href="#" class="thumbnail">
@@ -177,9 +177,9 @@
 					<button class="btn" id="printRecipeButton">Print full recipe</button>
 				</div>
 			</div>
-			<div id="view6" style="display:none">
-				<div class="printEntry panel panel-default">
-					<div class="row" class="dishDescription">
+			<div id="view6">
+				<div class="printEntry panel panel-default" id="printView">
+					<div class="row dishDescription">
 					  <div class="col-sm-12 col-md-6 col-lg-6">
 					      <img src="images/meatballs.jpg" style="float:left">
 					      <h2>Lasagne</h2>
