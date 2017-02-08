@@ -106,6 +106,11 @@ var DinnerModel = function() {
 		}
 	}
 
+	//function that returns the ingredients of a dish with specific ID
+	this.getDishIngredients = function (id) {
+	  return this.getDish(id)['ingredients'];
+	}
+
 
 	// the dishes variable contains an array of all the 
 	// dishes in the database. each dish has id, name, type,

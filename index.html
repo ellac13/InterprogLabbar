@@ -27,7 +27,7 @@
 				<h2>A Home Dinner Service</h2>
 				<hr> <!-- HORIZONTAL LINE-->
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam! </p>
-				<p><button class="btn">Start planning!</button></p>
+				<p><button class="btn" id="startPlanningButton">Start planning!</button></p>
 			</div>
 			</div>
 		</div>
@@ -58,7 +58,7 @@
 					</tr>
 				</table>
 				<br>
-				<button class="btn" id="confimation-button" style="">Confirm dinner</button>
+				<button class="btn" id="confirmationButton" style="">Confirm dinner</button>
 			</div>
 
 			<div class="mainView" id="view3" style="display:none">
@@ -89,8 +89,8 @@
 					</div>
 				</div>
 				<div class="selectDishGrid">
-					<div class="row">
-					  <div class="col-sm-12 col-md-3">
+					<div class="row" id="selectDishGridRow">
+					  <!-- <div class="col-sm-12 col-md-3">
 					    <div class="thumbnail">
 					      <img src="images/toast.jpg">
 					      <div class="caption">
@@ -100,11 +100,12 @@
 					      </div>
 					    </div>
 					  </div>
-					</div>
+					  <div class="col-sm-12 col-md-3"><div class="thumbnail"><img src="images/image.png"><div class="caption"><h3>Toast</h3><p>blabla</p><p><a href="#" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Select</a></p></div></div></div>
+ -->					</div>
 				</div>
 			</div>
 			<div class="mainView" id="view4">
-				<div class="row">
+				<div class="row" id="view4Row">
   					<div class="col-sm-12 col-md-6">
 						<div class="thumbnail">
 					      <h2>Toast</h2>
@@ -215,5 +216,11 @@
 	<script src="js/model/dinnerModel.js"></script>
 	<script src="js/view/exampleView.js"></script>
 	<script src="js/view/exampleViewController.js"></script>
+	<script src="js/view/view1.js"></script>
+	<script src="js/view/view2.js"></script>
+	<script src="js/view/view3.js"></script>
+	<script src="js/view/view4.js"></script>
+	<script src="js/view/view5.js"></script>
+	<script src="js/view/view6.js"></script>
   </body>
 </html>

@@ -31,6 +31,10 @@ div.body {
 	background: rgba(255,255,0,0.0);
 }
 
+#view1{
+	background-image: url("images/family.jpg");
+}
+
 div.selectedDishes {
 	width: 5cm;
 	margin-right: 5px;
