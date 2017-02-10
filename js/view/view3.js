@@ -20,11 +20,26 @@ var View3 = function (container, model) {
 
 
 	var generateThumbnailHTML = function(name, image, description){
-		return '<div class="col-sm-12 col-md-3"><div class="thumbnail"><img src="images/' + image + '"><div class="caption"><h3>' + name + '</h3><p>' + description + '</p><p><a href="#" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Select</a></p></div></div></div>'; 
+		return '<div class="col-sm-12 col-md-3"><div class="thumbnail"><img src="images/' + image + '"><div class="caption"><h3>' + name + '</h3><p>' + description + '</p><p><a href="#" class="btn btn-primary openDishButton" role="button">View</a> <a href="#" class="btn btn-default" role="button">Select</a></p></div></div></div>'; 
+		//return '<div class="col-sm-12 col-md-3"><div class="thumbnail"><img src="images/' + image + '"><div class="caption"><h3>' + name + '</h3><p>' + description + '</p><p><a href="#" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Select</a></p></div></div></div>'; 
 		//TODO: Lös knapparna
 	}
 	
 	//Update the dish grid
 	container.find("#selectDishGridRow").html(this.generateDishesHTML());
+
+	
+
+	window.onload = function(){
+		
+		this.openDishButton = container.find(".openDishButton");
+
+		var openDishClick = function(event) {
+			document.getElementById('view3').style.display= 'none';
+			document.getElementById('view4').style.display= '';
+		}
+		this.openDishButton.click(openDishClick);
+	}
+
 }
  

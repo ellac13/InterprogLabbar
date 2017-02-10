@@ -40,5 +40,13 @@ var View4 = function (container, model) {
 	
 	//Update the dish grid
 	container.find("#view4Row").html(this.generateViewHTML());
+
+	this.backButton = container.find("#backToSelectDishButton");
+
+	var backButtonClick = function(event) {
+		document.getElementById('view4').style.display= 'none';
+		document.getElementById('view3').style.display= '';
+	}
+	this.backButton.click(backButtonClick);
 }
  

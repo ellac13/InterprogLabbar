@@ -32,11 +32,11 @@ var DinnerModel = function() {
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		var ingredients = [];
-		console.log("outside for-each-loop");
+		//console.log("outside for-each-loop");
 		for (var key in this.menu) {
-			console.log("inside for-each-loop with key: " + key);
+			//console.log("inside for-each-loop with key: " + key);
 			for (var key2 in this.menu[key]["ingredients"]) {
-				console.log("inside inside for-each-loop with key: " + key2);
+				//console.log("inside inside for-each-loop with key: " + key2);
 				ingredients.push(this.menu[key]["ingredients"][key2]);
 			};
 		};

@@ -38,7 +38,6 @@ var View2 = function (container, model) {
 		for (var i = 0; i < ingredients.length; i++) {
 			price += ingredients[i]['quantity'] * ingredients[i]['price'];
 		};
-		console.log(model.getNumberOfGuests());
 		price = price * model.getNumberOfGuests();
 		return '<tr><td>' + name +'</td><td class="rightAlignText">' + price + '</td></tr>';
 	}

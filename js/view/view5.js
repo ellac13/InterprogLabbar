@@ -34,5 +34,13 @@ var View5 = function (container, model) {
 	
 	//Update the dish grid
 	container.find("#finalDishSelection").html(this.generateViewHTML());
+
+	this.printButton = container.find("#printRecipeButton");
+
+	var printButtonClick = function(event) {
+		document.getElementById('view5').style.display= 'none';
+		document.getElementById('view6').style.display= '';
+	}
+	this.printButton.click(printButtonClick);
 }
  

@@ -6,5 +6,13 @@ var View56header = function (container, model) {
 	var numberOfGuests = model.getNumberOfGuests();
 	//Update the dish grid
 	container.find("#finalHeaderNumberOfGuests").html(numberOfGuests);
+
+	this.backButton = container.find("#finalHeaderBackButton");
+
+	var backButtonClick = function(event) {
+		document.getElementById('view56').style.display= 'none';
+		document.getElementById('view234').style.display= '';
+	}
+	this.backButton.click(backButtonClick);
 }
  
