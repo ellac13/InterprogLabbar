@@ -1,14 +1,7 @@
 //View5 Object constructor
 var View5 = function (container, model) {
-	
-	// Get all the relevant elements of the view (ones that show data
-  	// and/or ones that responed to interaction)
-	//this.confirmButton = container.find("#confirmationButton");
-	//this.selectDishGridRow = container.find("#selectDishGridRow");
 
-	//document.getElementById('numberOfGuests').innerHTML = "whatever liksom";
-
-	this.menu = model.getFullMenu(); //TODO:Implementera currently vald dish
+	this.menu = model.getFullMenu();
 	var numberOfGuests = model.getNumberOfGuests();
 
 	this.generateViewHTML = function(){

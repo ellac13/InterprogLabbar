@@ -1,43 +1,61 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
  
-	//TODO Lab 2 implement the data structure that will hold number of guest
-	// and selected dinner options for dinner menu
+	this.numGuestsChanged = 1;
+	this.dishAdded = 2;
+	this.dishRemoved = 3;
+	this.currentlyViewedDishIDChanged = 4;
 
-	this.numberOfGuests = 4;
-	this.menu = [];
+	var numberOfGuests = 4;
+	var menu = [];
+	var observers = [];
+	var currentlyViewedDishID = 102;//-1;
 
+	//Sets the currentlyViewedDishID.
+	this.setCurrentlyViewedDishID = function(id) {
+		if(this.getDish(id) != null){
+			currentlyViewedDishID = id;
+			notifyObservers(this.currentlyViewedDishIDChanged);
+		}
+	}
+
+	// Returns the CurrentlyViewedDishID
+	this.getCurrentlyViewedDishID = function() {
+		return currentlyViewedDishID;
+	}
+
+	//Sets the number of guests.
 	this.setNumberOfGuests = function(num) {
-		if (Number.isInteger(num)) {
-			this.numberOfGuests = num;
+		if (Number.isInteger(num) && num > 0) {
+			numberOfGuests = num;
+			notifyObservers(this.numGuestsChanged);
 		};
 	}
 
-	// should return 
+	// Returns the number of guests.
 	this.getNumberOfGuests = function() {
-		return this.numberOfGuests;
-		//TODO Lab 2
+		return numberOfGuests;
 	}
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
-		return this.menu[type];
+		return menu[type];
 	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		return this.menu;
+		return menu;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		var ingredients = [];
 		//console.log("outside for-each-loop");
-		for (var key in this.menu) {
+		for (var key in menu) {
 			//console.log("inside for-each-loop with key: " + key);
-			for (var key2 in this.menu[key]["ingredients"]) {
+			for (var key2 in menu[key]["ingredients"]) {
 				//console.log("inside inside for-each-loop with key: " + key2);
-				ingredients.push(this.menu[key]["ingredients"][key2]);
+				ingredients.push(menu[key]["ingredients"][key2]);
 			};
 		};
 		return ingredients;
@@ -48,7 +66,7 @@ var DinnerModel = function() {
 		var ingredients = this.getAllIngredients();
 		var sum = 0;
 		for (var i = 0; i < ingredients.length; i++) {
-			sum += ingredients[i]['price'] * ingredients[i]['quantity'] * this.numberOfGuests;
+			sum += ingredients[i]['price'] * ingredients[i]['quantity'] * numberOfGuests;
 		};
 		return sum;
 	}
@@ -63,14 +81,16 @@ var DinnerModel = function() {
 				break;
 			}
 		};
-		this.menu[dish['type']] = dish;
+		menu[dish['type']] = dish;
+		notifyObservers(this.dishAdded);
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		for(var key in this.menu){
-			if(this.menu[key]['id'] === id){
-				delete this.menu[key];
+		for(var key in menu){
+			if(menu[key]['id'] === id){
+				delete menu[key];
+				notifyObservers(this.dishRemoved);
 			}
 		}
 	}
@@ -111,7 +131,21 @@ var DinnerModel = function() {
 	  return this.getDish(id)['ingredients'];
 	}
 
+	// Adds a observer to the observers list. Checks that it is not already in it.
+	this.addObserver = function(observer){
+		if(!observers.includes(observer)){
+			observers.push(observer);
+		} else {
+			console.log("Tried to add an observer that was already in the list...");
+		}
+	}
 
+	//Notifies all observers that there has been an update to the model.
+	var notifyObservers = function(object){
+		for (observer in observers){
+			observers[observer].update(object);
+		}
+	}
 
 
 	// the dishes variable contains an array of all the 
@@ -365,6 +399,6 @@ var DinnerModel = function() {
 		}
 	];
 
-	this.menu = this.getAllDishes("starter");
+	menu = this.getAllDishes("starter");
 
 }

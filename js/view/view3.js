@@ -1,26 +1,21 @@
 //View3 Object constructor
 var View3 = function (container, model) {
-	
-	// Get all the relevant elements of the view (ones that show data
-  	// and/or ones that responed to interaction)
-	//this.confirmButton = container.find("#confirmationButton");
-	//this.selectDishGridRow = container.find("#selectDishGridRow");
-
-	//document.getElementById('numberOfGuests').innerHTML = "whatever liksom";
+	model.addObserver(this);
 
 	this.dishes = model.getAllDishes('main dish');
+	this.openDishButton = container.find(".openDishButton");
 
 	this.generateDishesHTML = function(){
 		var html = "";
 		for (var i = 0; i < this.dishes.length; i++) {
-			html = html + generateThumbnailHTML(this.dishes[i]['name'],this.dishes[i]['image'],this.dishes[i]['description']);
+			html = html + generateThumbnailHTML(this.dishes[i]['name'],this.dishes[i]['image'],this.dishes[i]['description'],this.dishes[i]['id']);
 		};
 		return html;
 	}
 
 
-	var generateThumbnailHTML = function(name, image, description){
-		return '<div class="col-sm-12 col-md-3"><div class="thumbnail"><img src="images/' + image + '"><div class="caption"><h3>' + name + '</h3><p>' + description + '</p><p><a href="#" class="btn btn-primary openDishButton" role="button">View</a> <a href="#" class="btn btn-default" role="button">Select</a></p></div></div></div>'; 
+	var generateThumbnailHTML = function(name, image, description, id){
+		return '<div class="col-sm-12 col-md-3"><div class="thumbnail"><img src="images/' + image + '"><div class="caption"><h3>' + name + '</h3><p>' + description + '</p><p><button class="btn btn-primary openDishButton" role="button" data_dishid="' + id + '">View</button> <button class="btn btn-default" role="button">Select</button></p></div></div></div>'; 
 		//return '<div class="col-sm-12 col-md-3"><div class="thumbnail"><img src="images/' + image + '"><div class="caption"><h3>' + name + '</h3><p>' + description + '</p><p><a href="#" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Select</a></p></div></div></div>'; 
 		//TODO: Lös knapparna
 	}
@@ -30,16 +25,6 @@ var View3 = function (container, model) {
 
 	
 
-	window.onload = function(){
-		
-		this.openDishButton = container.find(".openDishButton");
-
-		var openDishClick = function(event) {
-			document.getElementById('view3').style.display= 'none';
-			document.getElementById('view4').style.display= '';
-		}
-		this.openDishButton.click(openDishClick);
-	}
 
 }
  

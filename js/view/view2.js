@@ -1,6 +1,9 @@
 //View2 Object constructor
 var View2 = function (container, model) {
 	
+	//Subscribe to model changes.
+	model.addObserver(this);
+	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
 	this.confirmButton = container.find("#confirmationButton");
@@ -8,22 +11,11 @@ var View2 = function (container, model) {
 	this.plusButton = container.find("#plusGuest");
 	this.minusButton = container.find("#minusGuest");
 
-	//document.getElementById('numberOfGuests').innerHTML = "whatever liksom";
-
-
 	this.noOfGuests = model.getNumberOfGuests();
 	
 	this.numberOfGuests.html(this.noOfGuests);
 
-	var confirmButtonClick = function(event) {
-		document.getElementById('view234').style.display= 'none';
-		document.getElementById('view56').style.display= '';
-	}
-	this.confirmButton.click(confirmButtonClick);
-	
-
-
-	this.menu = model.getFullMenu(); //TODO:Implementera currently vald dish
+	this.menu = model.getFullMenu();
 
 	this.generateViewHTML = function(){
 		var html = '<tr style="background: rgba(0,0,0,0.3)"><th>Dish</th><th class="rightAlignText">Cost</th></tr>';
@@ -44,5 +36,16 @@ var View2 = function (container, model) {
 	
 	//Update the dish grid
 	container.find("#selectedDishesTable").html(this.generateViewHTML());
+
+	this.update = function(object){
+		if(object === model.numGuestsChanged){
+			this.noOfGuests = model.getNumberOfGuests();
+			this.numberOfGuests.html(this.noOfGuests);	
+		} else if(object === model.dishAdded || object === model.dishRemoved){
+			this.menu = model.getFullMenu(); //TODO:Implementera currently vald dish
+			//Update the dish grid
+			container.find("#selectedDishesTable").html(this.generateViewHTML());
+		}
+	}
 }
  

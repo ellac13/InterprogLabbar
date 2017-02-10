@@ -1,14 +1,9 @@
 //View4 Object constructor
 var View4 = function (container, model) {
-	
-	// Get all the relevant elements of the view (ones that show data
-  	// and/or ones that responed to interaction)
-	//this.confirmButton = container.find("#confirmationButton");
-	//this.selectDishGridRow = container.find("#selectDishGridRow");
+	model.addObserver(this);//subscribe to changes.
+	this.backButton = container.find("#backToSelectDishButton");
 
-	//document.getElementById('numberOfGuests').innerHTML = "whatever liksom";
-
-	this.dish = model.getDish(100); //TODO:Implementera currently vald dish
+	this.dish = model.getDish(model.getCurrentlyViewedDishID());
 	var numberOfGuests = model.getNumberOfGuests();
 
 	this.generateViewHTML = function(){
@@ -37,16 +32,15 @@ var View4 = function (container, model) {
 	var generatePreparationThumbnailHTML = function(description){
 		return '<div class="col-sm-12 col-md-6"><div class="thumbnail"><h2>Preparations</h2><p>' + description +'</p></div></div>'; 
 	}
+
+	this.update = function(object){
+		this.dish = model.getDish(model.getCurrentlyViewedDishID());
+		numberOfGuests = model.getNumberOfGuests();
+		//Update the dish grid
+		container.find("#view4Row").html(this.generateViewHTML());
+	}
 	
 	//Update the dish grid
 	container.find("#view4Row").html(this.generateViewHTML());
-
-	this.backButton = container.find("#backToSelectDishButton");
-
-	var backButtonClick = function(event) {
-		document.getElementById('view4').style.display= 'none';
-		document.getElementById('view3').style.display= '';
-	}
-	this.backButton.click(backButtonClick);
 }
  
