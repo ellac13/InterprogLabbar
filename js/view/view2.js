@@ -19,8 +19,8 @@ var View2 = function (container, model) {
 
 	this.generateViewHTML = function(){
 		var html = '<tr style="background: rgba(0,0,0,0.3)"><th>Dish</th><th class="rightAlignText">Cost</th></tr>';
-		for (var i = 0; i < this.menu.length; i++) {
-			html = html + generateRowHTML(this.menu[i]['name'],this.menu[i]['ingredients']);
+		for(dish in this.menu){
+			html = html + generateRowHTML(this.menu[dish]['name'],this.menu[dish]['ingredients']);
 		};
 		return html + '<tr><td></td><td class="rightAlignText">Total cost: <span id="totalCost">' + model.getTotalMenuPrice() + '</span></td></tr>';
 	}
@@ -30,7 +30,7 @@ var View2 = function (container, model) {
 		for (var i = 0; i < ingredients.length; i++) {
 			price += ingredients[i]['quantity'] * ingredients[i]['price'];
 		};
-		price = price * model.getNumberOfGuests();
+		price = parseInt(price * model.getNumberOfGuests());
 		return '<tr><td>' + name +'</td><td class="rightAlignText">' + price + '</td></tr>';
 	}
 	
@@ -38,11 +38,15 @@ var View2 = function (container, model) {
 	container.find("#selectedDishesTable").html(this.generateViewHTML());
 
 	this.update = function(object){
-		if(object === model.numGuestsChanged){
+		if(object === model.dishAdded || object === model.dishRemoved){
+			this.menu = model.getFullMenu(); 
+			//Update the dish grid
+			container.find("#selectedDishesTable").html(this.generateViewHTML());
+		}else if(object === model.numGuestsChanged){
 			this.noOfGuests = model.getNumberOfGuests();
 			this.numberOfGuests.html(this.noOfGuests);	
-		} else if(object === model.dishAdded || object === model.dishRemoved){
-			this.menu = model.getFullMenu(); //TODO:Implementera currently vald dish
+
+			this.menu = model.getFullMenu(); 
 			//Update the dish grid
 			container.find("#selectedDishesTable").html(this.generateViewHTML());
 		}

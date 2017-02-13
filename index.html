@@ -67,23 +67,21 @@
 					<hr>
 					<div id="searchDishBar">
     					<div class="input-group" id="searchDish">
-      						<input type="text" class="form-control" placeholder="Search for dish...">
-      						<span class="input-group-btn">
-    							<button class="btn btn-default" type="button">Search</button>
-      						</span>
+      						<input type="text" class="form-control dishSearchField" placeholder="Search for dish...">
+      						<!--<span class="input-group-btn">
+    							<button class="btn btn-default dishSearchButton" type="button">Search</button>
+      						</span>-->
     					</div><!-- /input-group -->
 
     					<div class="dropdown">
  							<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-   								Dropdown
+   								Dish type
     						<span class="caret"></span>
   							</button>
 							<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-								<li><a href="#">Action</a></li>
-							    <li><a href="#">Another action</a></li>
-							    <li><a href="#">Something else here</a></li>
-							    <li role="separator" class="divider"></li>
-							    <li><a href="#">Separated link</a></li>
+								<li><a data_dishtype="starter" class="dishTypeSelector">Starters</a></li>
+							    <li><a data_dishtype="main dish" class="dishTypeSelector">Main dishes</a></li>
+							    <li><a data_dishtype="dessert" class="dishTypeSelector">Desserts</a></li>
 							</ul>
 						</div>
 					</div>
@@ -218,6 +216,7 @@
 	<script src="js/view/exampleView.js"></script>
 	<script src="js/view/exampleViewController.js"></script>
 	<script src="js/view/view1.js"></script>
+	<script src="js/view/view1Controller.js"></script>
 	<script src="js/view/view2.js"></script>
 	<script src="js/view/view2Controller.js"></script>
 	<script src="js/view/view3.js"></script>

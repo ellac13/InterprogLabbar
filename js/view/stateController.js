@@ -18,6 +18,7 @@ var StateController = function () {
 			document.getElementById('view1').style.display= '';
 		} else if (viewToShow === "view3" || viewToShow === "view4"){
 			document.getElementById('view234').style.display= '';
+			document.getElementById('view2').style.display= '';
 			if(viewToShow === "view3"){
 				document.getElementById('view3').style.display= '';
 			} else if (viewToShow === "view4"){

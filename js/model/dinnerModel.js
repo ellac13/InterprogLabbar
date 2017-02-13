@@ -68,15 +68,15 @@ var DinnerModel = function() {
 		for (var i = 0; i < ingredients.length; i++) {
 			sum += ingredients[i]['price'] * ingredients[i]['quantity'] * numberOfGuests;
 		};
-		return sum;
+		return parseInt(sum);
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		var dish;
-		for (var i = dishes.length - 1; i >= 0; i--) {
-			if(dishes[i]['id'] === id){
+		for (var i = 0; i < dishes.length; i++) {
+			if(dishes[i]['id'] == id){
 				dish = dishes[i];
 				break;
 			}
@@ -88,7 +88,7 @@ var DinnerModel = function() {
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		for(var key in menu){
-			if(menu[key]['id'] === id){
+			if(menu[key]['id'] == id){
 				delete menu[key];
 				notifyObservers(this.dishRemoved);
 			}
@@ -399,6 +399,6 @@ var DinnerModel = function() {
 		}
 	];
 
-	menu = this.getAllDishes("starter");
+	//menu = this.getAllDishes("starter");
 
 }
