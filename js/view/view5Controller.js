@@ -1,6 +1,6 @@
 //view5Controller Object constructor
 var View5Controller = function (view, model, stateController) {
-	
+	/*
 	//View dish
 	var openDishClick = function(event) {
 		model.setCurrentlyViewedDishID(event.target.parentElement.parentElement.parentElement.attributes['data_dishid'].nodeValue);
@@ -40,5 +40,5 @@ var View5Controller = function (view, model, stateController) {
 
 
 	//Initially select the first dish type in the list
-	$(".dishTypeSelector")[0].click();
+	$(".dishTypeSelector")[0].click();*/
 }
