@@ -3,19 +3,17 @@ var View4 = function (container, model) {
 	model.addObserver(this);//subscribe to changes.
 	this.backButton = container.find("#backToSelectDishButton");
 
-	this.dish = model.getDish(model.getCurrentlyViewedDishID());
-	var numberOfGuests = model.getNumberOfGuests();
+	var dish;
+	var numberOfGuests;
 
 	this.generateViewHTML = function(){
-		return generatePictureThumbnailHTML(this.dish['name'], this.dish['image'], this.dish['description']) + 
-				generateIngredientThumbnailHTML(this.dish['ingredients']) + 
-				generatePreparationThumbnailHTML(this.dish['description']);
+		return generatePictureThumbnailHTML(dish['name'], dish['image'], dish['description']) + 
+				generateIngredientThumbnailHTML(dish['ingredients']) + 
+				generatePreparationThumbnailHTML(dish['description']);
 	}
-
 
 	var generatePictureThumbnailHTML = function(name, image, description){
 		return '<div class="col-sm-12 col-md-6"><div class="thumbnail"><h2>' + name + '</h2><img src="images/' + image + '"><div class="caption"><p>' + description + '</p><button class="btn btn-default" id="backToSelectDishButton" type="button"><span class="glyphicon glyphicon-chevron-left"></span> Back</button></div></div></div>'; 
-		//TODO: Lös knapparna
 	}
 
 	var generateIngredientThumbnailHTML = function(ingredients){
@@ -27,7 +25,6 @@ var View4 = function (container, model) {
 		};
 		ingredientsPrice = parseInt(ingredientsPrice);
 		return '<div class="col-sm-12 col-md-6"><div class="thumbnail"><h2>Ingredients for ' + numberOfGuests +' people</h2><hr><table id="dishIngredientTable">'+ ingredientsHTML +'</table><hr><div><button class="btn btn-default" id="confirmDishButton" type="button">Confirm Dish</button><p style="float:right">Total cost: <span id="dishCost">' + ingredientsPrice * numberOfGuests +'</span> SEK</p></div></div></div>'; 
-		//TODO: Lös knapparna
 	}
 
 	var generatePreparationThumbnailHTML = function(description){
@@ -35,13 +32,11 @@ var View4 = function (container, model) {
 	}
 
 	this.update = function(object){
-		this.dish = model.getDish(model.getCurrentlyViewedDishID());
+		dish = model.getDish(model.getCurrentlyViewedDishID());
 		numberOfGuests = model.getNumberOfGuests();
 		//Update the dish grid
 		container.find("#view4Row").html(this.generateViewHTML());
 	}
-	
-	//Update the dish grid
-	container.find("#view4Row").html(this.generateViewHTML());
+	this.update();
 }
  

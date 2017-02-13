@@ -8,8 +8,6 @@ var View56header = function (container, model) {
   	// and/or ones that responed to interaction)
 	var numberOfGuests;
 
-	//container.find("#finalHeaderNumberOfGuests").html(numberOfGuests);
-
 	this.backButton = container.find("#finalHeaderBackButton");
 
 	var backButtonClick = function(event) {

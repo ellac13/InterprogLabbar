@@ -101,7 +101,7 @@ div.mainView {
 	overflow-x: hidden;
 }
 
-#dishIngredientTable {
+#dishIngredientTable, #printIngredientTable {
 	width: 100%	;
 }
 
@@ -137,4 +137,8 @@ div.mainView {
 #view6{
 	overflow-y: auto;
 	overflow-x: hidden;
+}
+
+.printTableQuantity {
+	width: 4cm;
 }
