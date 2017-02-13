@@ -15,7 +15,9 @@ $(function() {
 	var view56header = new View56header($("#view56"), model);
 	var view56Controller = new View56Controller(view56header, model, stateController);
 	var view5 = new View5($("#view5"), model);
+	var view5Controller = new View5Controller(view5, model, stateController);
 	var view6 = new View6($("#view6"), model);
+	var view6Controller = new View6Controller(view6, model, stateController);
 
 	//var exampleView = new ExampleView($("#view2"), model);
 	//var exampleViewController = new ExampleViewController(exampleView, model);
