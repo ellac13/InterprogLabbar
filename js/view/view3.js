@@ -4,6 +4,8 @@ var View3 = function (container, model) {
 
 	this.dishes = model.getAllDishes('main dish');
 	this.openDishButton = container.find(".openDishButton");
+	this.selectDishGridRow = container.find(".selectDishGridRow");
+
 
 	this.generateDishesHTML = function(){
 		var html = "";
