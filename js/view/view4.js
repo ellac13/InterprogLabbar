@@ -22,10 +22,10 @@ var View4 = function (container, model) {
 		var ingredientsHTML = "";
 		var ingredientsPrice = 0;
 		for (var i = 0; i < ingredients.length; i++) {
-			ingredientsHTML = ingredientsHTML + '<tr><td>' + ingredients[i]['quantity'] + ' ' + ingredients[i]['unit'] + '</td><td>' + ingredients[i]['name'] + '</td><td>SEK</td><td>' + ingredients[i]['price'] + '</td></tr>';
+			ingredientsHTML = ingredientsHTML + '<tr><td>' + ingredients[i]['quantity'] * numberOfGuests + ' ' + ingredients[i]['unit'] + '</td><td>' + ingredients[i]['name'] + '</td><td>SEK</td><td>' + ingredients[i]['price'] * numberOfGuests + '</td></tr>';
 			ingredientsPrice += ingredients[i]['quantity'] * ingredients[i]['price'];
 		};
-		return '<div class="col-sm-12 col-md-6"><div class="thumbnail"><h2>Ingredients for ' + numberOfGuests +'people</h2><hr><table id="dishIngredientTable">'+ ingredientsHTML +'</table><hr><div><button class="btn btn-default" id="confirmDishButton" type="button">Confirm Dish</button><p style="float:right">Total cost: <span id="dishCost">' + ingredientsPrice * numberOfGuests +'</span> SEK</p></div></div></div>'; 
+		return '<div class="col-sm-12 col-md-6"><div class="thumbnail"><h2>Ingredients for ' + numberOfGuests +' people</h2><hr><table id="dishIngredientTable">'+ ingredientsHTML +'</table><hr><div><button class="btn btn-default" id="confirmDishButton" type="button">Confirm Dish</button><p style="float:right">Total cost: <span id="dishCost">' + ingredientsPrice * numberOfGuests +'</span> SEK</p></div></div></div>'; 
 		//TODO: Lös knapparna
 	}
 
