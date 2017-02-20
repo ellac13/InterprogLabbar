@@ -24,14 +24,14 @@ var View6 = function (container, model) {
 	}
 
 	var generateDishHTML = function(name, image, description, ingredients){
-		return '<div class="row dishDescription"><div class="col-sm-12 col-md-6 col-lg-6"><img src="images/' + image + '" style="float:left"><h2>' + name + '</h2><p>' + description + '</p></div>' + generateIngredientTableHTML(ingredients) + '</div>';
+		return '<div class="row dishDescription"><div class="col-sm-12 col-md-6 col-lg-6"><img src="' + (model.baseImageURL + image) + '" style="float:left"><h2>' + name + '</h2><p>' + description + '</p></div>' + generateIngredientTableHTML(ingredients) + '</div>';
 	}
 
 	this.update = function(object){
-		menu = model.getFullMenu();
+		/*menu = model.getFullMenu();
 		numberOfGuests = model.getNumberOfGuests();
 		//Update the dish grid
-		container.find("#printView").html(this.generateViewHTML());
+		container.find("#printView").html(this.generateViewHTML());*/
 	}
 
 	this.update();

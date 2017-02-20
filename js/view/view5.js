@@ -22,7 +22,7 @@ var View5 = function (container, model) {
 			price += ingredients[i]['quantity'] * ingredients[i]['price'];
 		};
 		price = parseInt(price * numberOfGuests);
-		return '<div class="col-sm-12 col-md-4 col-lg-3"><div class="thumbnail"><img src="images/' + image + '"><h3>' + name + '</h3><p>Price: <span id="dishPrice">' + price + ' SEK</span></p></div></div>'; 
+		return '<div class="col-sm-12 col-md-4 col-lg-3"><div class="thumbnail"><img src="' + (model.baseImageURL + image) + '"><h3>' + name + '</h3><p>Price: <span id="dishPrice">' + price + ' SEK</span></p></div></div>'; 
 	}
 
 	var generateTotalPriceThumbnailHTML = function(price){
@@ -30,10 +30,10 @@ var View5 = function (container, model) {
 	}
 
 	this.update = function(object){
-		menu = model.getFullMenu();
+		/*menu = model.getFullMenu();
 		numberOfGuests = model.getNumberOfGuests();
 		//Update the dish grid
-		container.find("#finalDishSelection").html(this.generateViewHTML());
+		container.find("#finalDishSelection").html(this.generateViewHTML());*/
 	}
 	this.update();
 }

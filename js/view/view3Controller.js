@@ -14,7 +14,7 @@ var View3Controller = function (view, model, stateController) {
 		//model.setCurrentlyViewedDishID(event.target.attributes['data_dishtype'].nodeValue);
 		$("#dropdownMenu1").html(event.target.innerHTML + ' <span class="caret"></span>');
 		view.currentDishType = event.target.attributes['data_dishtype'].nodeValue;
-		view.update();
+		view.update(model.newSearch);
 	}
 
 	$(".dishTypeSelector").click(dishTypeClick);
@@ -22,7 +22,7 @@ var View3Controller = function (view, model, stateController) {
 	//Dish search
 	var dishSearchClick = function(event) {
 		view.currentDishSearch = document.getElementsByClassName('dishSearchField')[0].value;
-		view.update();
+		view.update(model.newSearch);
 	}
 
 	//In case of search button uncommented, add listener to button as well

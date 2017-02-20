@@ -37,22 +37,22 @@ var View3 = function (container, model) {
 	}
 
 	var fail = function(data){
-		console.log(data)
 		selectDishGridRow.html(generateTextPrint('Sorry, failed to load dishes :('));
 	}
 	
 	this.update = function(object){
-		//Print loading message
-		selectDishGridRow.html(generateTextPrint('Loading...'));
+		if(object === model.newSearch){
+			//Print loading message
+			selectDishGridRow.html(generateTextPrint('Loading...'));
 
-		//Update dish selection to show
-		//dishes = model.getAllDishes(this.currentDishType,this.currentDishSearch, success, fail);
-		model.getAllDishes(this.currentDishType,this.currentDishSearch, success, fail);
-		
-		//Update the dish grid
-		//container.find("#selectDishGridRow").html(this.generateDishesHTML());
-
+			//Update dish selection to show
+			//dishes = model.getAllDishes(this.currentDishType,this.currentDishSearch, success, fail);
+			model.getAllDishes(this.currentDishType,this.currentDishSearch, success, fail);
+			
+			//Update the dish grid
+			//container.find("#selectDishGridRow").html(this.generateDishesHTML());
+		}
 	}
-	//this.update();
+	this.update(model.newSearch);
 }
  

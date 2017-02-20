@@ -16,8 +16,9 @@ var View2 = function (container, model) {
 
 	this.generateViewHTML = function(){
 		var html = '<tr style="background: rgba(0,0,0,0.3)"><th>Dish</th><th class="rightAlignText">Cost</th></tr>';
-		for(dish in menu){
-			html = html + generateRowHTML(menu[dish]['name'],menu[dish]['ingredients']);
+		//for(dish in menu){
+		for (var dish = 0; dish < menu.length; dish++){
+			html = html + generateRowHTML(menu[dish]['title'],menu[dish]['ingredients']);
 		};
 		return html + '<tr><td></td><td class="rightAlignText">Total cost: <span id="totalCost">' + model.getTotalMenuPrice() + '</span></td></tr>';
 	}

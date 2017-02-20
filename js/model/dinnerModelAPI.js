@@ -5,20 +5,21 @@ var DinnerModel = function() {
 	this.dishAdded = 2;
 	this.dishRemoved = 3;
 	this.currentlyViewedDishIDChanged = 4;
+	this.newSearch = 5;
+
+	var model = this;
 
 	this.baseImageURL = "https://spoonacular.com/recipeImages/";
 
 	var numberOfGuests = 4;
 	var menu = [];
 	var observers = [];
-	var currentlyViewedDishID = 102;//-1;
+	var currentlyViewedDishID;//-1;
 
 	//Sets the currentlyViewedDishID.
 	this.setCurrentlyViewedDishID = function(id) {
-		if(this.getDish(id) != null){
-			currentlyViewedDishID = id;
-			notifyObservers(this.currentlyViewedDishIDChanged);
-		}
+		currentlyViewedDishID = id;
+		notifyObservers(this.currentlyViewedDishIDChanged);
 	}
 
 	// Returns the CurrentlyViewedDishID
@@ -40,9 +41,9 @@ var DinnerModel = function() {
 	}
 
 	//Returns the dish that is on the menu for selected type 
-	this.getSelectedDish = function(type) {
+	/*this.getSelectedDish = function(type) {
 		return menu[type];
-	}
+	}*/
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
@@ -76,8 +77,22 @@ var DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		menu[dish['type']] = this.getDish(id);
-		notifyObservers(this.dishAdded);
+		//Make sure that the same dish is not added twice to the menu
+		for(var i = 0; i < menu.length; i++){
+			if(menu[i].id == id){
+				return;
+			}
+		}
+
+		var cb = function(data){
+			console.log("Trying to add dish to menu");
+			menu.push(data);
+			notifyObservers(model.dishAdded);
+		}
+		var cbError = function(data){
+			console.log("Failed to add dish to menu");
+		}
+		this.getDish(id, cb, cbError);
 	}
 
 	//Removes dish from menu
@@ -93,28 +108,57 @@ var DinnerModel = function() {
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
-	this.getAllDishes = function (type,filter, cb, cbError) {
-	    $.ajax( {
-	   url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=' + filter + '&type=' + type,
-	   headers: {
-	     'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
-	   },
-	   success: function(data) {
-	     cb(data)
-	   },
-	   error: function(data) {
-	     cbError(data)
-	   }
-	 }) 	
+	this.getAllDishes = function (type, filter, cb, cbError) {
+		$.ajax( {
+		   url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=' + filter + '&type=' + type,
+		   headers: {
+		     'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+		   },
+		   success: function(data) {
+		     cb(data)
+		   },
+		   error: function(data) {
+		     cbError(data)
+		   }
+		})
 	}
 
 	//function that returns a dish of specific ID
-	this.getDish = function (id) {
-	  for(key in dishes){
-			if(dishes[key].id == id) {
-				return dishes[key];
+	this.getDish = function (id, cb, cbError) {
+		$.ajax( {
+		   url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + id + "/information",
+		   headers: {
+		     'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+		   },
+			success: function(data) {
+				var dish = convertDishDataToDishObject(data);
+				cb(dish)
+		   },
+			error: function(data) {
+				cbError(data)
+		   }
+		})
+	}
+
+	var convertDishDataToDishObject = function(data){
+		var dishObject = [];
+
+			dishObject.id = data.id;
+			dishObject.title = data.title;
+			dishObject.image = data.image;
+			dishObject.description = data.instructions;
+
+			dishObject.ingredients = [];
+			for(index in data.extendedIngredients){
+				var ingredientObject = {};
+				ingredientObject['name'] = data.extendedIngredients[index]['name'];
+				ingredientObject['quantity'] = data.extendedIngredients[index]['amount'];
+				ingredientObject['unit'] = data.extendedIngredients[index]['unit'];
+				ingredientObject['price'] = 1;
+				dishObject.ingredients.push(ingredientObject);
 			}
-		}
+
+		return dishObject;
 	}
 
 	//function that returns the ingredients of a dish with specific ID
