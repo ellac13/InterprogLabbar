@@ -86,6 +86,12 @@ var DinnerModel = function() {
 
 		var cb = function(data){
 			console.log("Trying to add dish to menu");
+			//Make sure that the same dish is not added twice to the menu
+			for(var i = 0; i < menu.length; i++){
+				if(menu[i].id == data.id){
+					return;
+				}
+			}
 			menu.push(data);
 			notifyObservers(model.dishAdded);
 		}
