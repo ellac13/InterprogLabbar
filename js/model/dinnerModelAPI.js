@@ -6,6 +6,8 @@ var DinnerModel = function() {
 	this.dishRemoved = 3;
 	this.currentlyViewedDishIDChanged = 4;
 
+	this.baseImageURL = "https://spoonacular.com/recipeImages/";
+
 	var numberOfGuests = 4;
 	var menu = [];
 	var observers = [];
@@ -74,14 +76,7 @@ var DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		var dish;
-		for (var i = 0; i < dishes.length; i++) {
-			if(dishes[i]['id'] == id){
-				dish = dishes[i];
-				break;
-			}
-		};
-		menu[dish['type']] = dish;
+		menu[dish['type']] = this.getDish(id);
 		notifyObservers(this.dishAdded);
 	}
 
@@ -98,23 +93,19 @@ var DinnerModel = function() {
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
-	this.getAllDishes = function (type,filter) {
-	  return dishes.filter(function(dish) {
-		var found = true;
-		if(filter){
-			found = false;
-			dish.ingredients.forEach(function(ingredient) {
-				if(ingredient.name.indexOf(filter)!=-1) {
-					found = true;
-				}
-			});
-			if(dish.name.indexOf(filter) != -1)
-			{
-				found = true;
-			}
-		}
-	  	return dish.type == type && found;
-	  });	
+	this.getAllDishes = function (type,filter, cb, cbError) {
+	    $.ajax( {
+	   url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=' + filter + '&type=' + type,
+	   headers: {
+	     'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+	   },
+	   success: function(data) {
+	     cb(data)
+	   },
+	   error: function(data) {
+	     cbError(data)
+	   }
+	 }) 	
 	}
 
 	//function that returns a dish of specific ID
@@ -398,7 +389,5 @@ var DinnerModel = function() {
 			}]
 		}
 	];
-
-	//menu = this.getAllDishes("starter");
 
 }
