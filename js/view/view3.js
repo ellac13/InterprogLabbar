@@ -10,11 +10,14 @@ var View3 = function (container, model) {
 	this.currentDishSearch = "";
 	var dishes;
 
+	var generateTextPrint = function(text){
+		return '<p class="col-sm-12 col-md-3">' + text + '</p>';
+	}
 
 	this.generateDishesHTML = function(){
 		var html = "";
 		if(dishes.length < 1){
-			return "No results found";
+			return generateTextPrint('No results found');
 		}
 		for (var i = 0; i < dishes.length; i++) {
 			html = html + generateThumbnailHTML(dishes[i]['title'], (model.baseImageURL + dishes[i]['image']), dishes[i]['id']);
@@ -35,12 +38,12 @@ var View3 = function (container, model) {
 
 	var fail = function(data){
 		console.log(data)
-		selectDishGridRow.html('Sorry, failed to load dishes');
+		selectDishGridRow.html(generateTextPrint('Sorry, failed to load dishes :('));
 	}
 	
 	this.update = function(object){
 		//Print loading message
-		selectDishGridRow.html('Loading...');
+		selectDishGridRow.html(generateTextPrint('Loading...'));
 
 		//Update dish selection to show
 		//dishes = model.getAllDishes(this.currentDishType,this.currentDishSearch, success, fail);
