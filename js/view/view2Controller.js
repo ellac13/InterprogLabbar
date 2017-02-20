@@ -19,7 +19,7 @@ var View2Controller = function (view, model, stateController) {
 
 	//Dish removal
 	var dishRemoveClick = function(event) {
-		model.removeDishFromMenu(event.target.parentElement.attributes['data_dishid']['nodeValue']);
+		model.removeDishFromMenu(event.currentTarget.attributes.data_dishid.nodeValue);
 	}
 
 	$("#selectedDishesTable").on("click", "button.dishRemovalButton", dishRemoveClick);
