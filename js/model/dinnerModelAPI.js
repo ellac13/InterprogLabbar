@@ -14,7 +14,7 @@ var DinnerModel = function() {
 	var numberOfGuests = 4;
 	var menu = [];
 	var observers = [];
-	var currentlyViewedDishID;//-1;
+	var currentlyViewedDishID = 102;//-1;
 
 	//Sets the currentlyViewedDishID.
 	this.setCurrentlyViewedDishID = function(id) {
@@ -97,9 +97,9 @@ var DinnerModel = function() {
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		for(var key in menu){
+		for(var key = 0; key < menu.length; key++){
 			if(menu[key]['id'] == id){
-				delete menu[key];
+				menu.splice(key, 1);
 				notifyObservers(this.dishRemoved);
 			}
 		}

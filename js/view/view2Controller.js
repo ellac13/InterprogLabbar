@@ -16,4 +16,12 @@ var View2Controller = function (view, model, stateController) {
 		stateController.showView("view5");
 	}
 	view.confirmButton.click(confirmButtonClick);
+
+	//Dish removal
+	var dishRemoveClick = function(event) {
+		model.removeDishFromMenu(event.target.parentElement.attributes['data_dishid']['nodeValue']);
+	}
+
+	$("#selectedDishesTable").on("click", "button.dishRemovalButton", dishRemoveClick);
+
 }

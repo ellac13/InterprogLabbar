@@ -11,7 +11,7 @@ var View5 = function (container, model) {
 	this.generateViewHTML = function(){
 		var html = "";
 		for (dish in menu){
-			html = html + generateDishThumbnailHTML(menu[dish]['name'],menu[dish]['image'],menu[dish]['ingredients'])
+			html = html + generateDishThumbnailHTML(menu[dish]['title'],menu[dish]['image'],menu[dish]['ingredients'])
 		};
 		return html + generateTotalPriceThumbnailHTML(model.getTotalMenuPrice());
 	}
@@ -22,18 +22,18 @@ var View5 = function (container, model) {
 			price += ingredients[i]['quantity'] * ingredients[i]['price'];
 		};
 		price = parseInt(price * numberOfGuests);
-		return '<div class="col-sm-12 col-md-4 col-lg-3"><div class="thumbnail"><img src="' + (model.baseImageURL + image) + '"><h3>' + name + '</h3><p>Price: <span id="dishPrice">' + price + ' SEK</span></p></div></div>'; 
+		return '<div class="col-sm-12 col-md-4 col-lg-3"><div class="thumbnail"><img src="' + image + '"><h3>' + name + '</h3><p>Price: <span id="dishPrice">' + price + ' SEK</span></p></div></div>'; 
 	}
 
 	var generateTotalPriceThumbnailHTML = function(price){
-		return '<div class="col-sm-12 col-md-4 col-lg-3"><div class="badge"><p>Total:</p><p>' + price + ' SEK</p></div></div>';
+		return '<div class="col-sm-12 col-md-4 col-lg-3"><div class="badge"><h4>Total:</h4><h3>' + price + ' SEK</h3></div></div>';
 	}
 
 	this.update = function(object){
-		/*menu = model.getFullMenu();
+		menu = model.getFullMenu();
 		numberOfGuests = model.getNumberOfGuests();
 		//Update the dish grid
-		container.find("#finalDishSelection").html(this.generateViewHTML());*/
+		container.find("#finalDishSelection").html(this.generateViewHTML());
 	}
 	this.update();
 }

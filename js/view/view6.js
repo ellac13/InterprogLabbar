@@ -10,7 +10,7 @@ var View6 = function (container, model) {
 	this.generateViewHTML = function(){
 		var html = "";
 		for (dish in menu){
-			html = html + generateDishHTML(menu[dish]['name'],menu[dish]['image'],menu[dish]['description'], menu[dish]['ingredients']);
+			html = html + generateDishHTML(menu[dish]['title'],menu[dish]['image'],menu[dish]['description'], menu[dish]['ingredients']);
 		};
 		return html;
 	}
@@ -24,14 +24,14 @@ var View6 = function (container, model) {
 	}
 
 	var generateDishHTML = function(name, image, description, ingredients){
-		return '<div class="row dishDescription"><div class="col-sm-12 col-md-6 col-lg-6"><img src="' + (model.baseImageURL + image) + '" style="float:left"><h2>' + name + '</h2><p>' + description + '</p></div>' + generateIngredientTableHTML(ingredients) + '</div>';
+		return '<div class="panel-heading"><h3>' + name + '</h3></div><div class="row dishDescription panel-body"><div class="col-sm-12 col-md-6 col-lg-6"><img class="view6Image" src="' + image + '"><p>' + description + '</p></div>' + generateIngredientTableHTML(ingredients) + '</div>';
 	}
 
 	this.update = function(object){
-		/*menu = model.getFullMenu();
+		menu = model.getFullMenu();
 		numberOfGuests = model.getNumberOfGuests();
 		//Update the dish grid
-		container.find("#printView").html(this.generateViewHTML());*/
+		container.find("#printView").html(this.generateViewHTML());
 	}
 
 	this.update();

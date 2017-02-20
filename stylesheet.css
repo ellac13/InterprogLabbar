@@ -142,3 +142,8 @@ div.mainView {
 .printTableQuantity {
 	width: 4cm;
 }
+
+.view6Image {
+	float:left;
+	max-width: 8cm;
+}

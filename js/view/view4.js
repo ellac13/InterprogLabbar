@@ -24,10 +24,11 @@ var View4 = function (container, model) {
 	}
 
 	var generateIngredientsTable = function(ingredients){
+		if(ingredients == null) return "";
 		var ingredientsHTML = "";
 		var ingredientsPrice = 0;
 		for (var i = 0; i < ingredients.length; i++) {
-			ingredientsHTML = ingredientsHTML + '<tr><td>' + parseFloat(ingredients[i]['quantity'] * numberOfGuests).toFixed(1) + ' ' + ingredients[i]['unit'] + '</td><td>' + ingredients[i]['name'] + '</td><td>SEK</td><td>' + ingredients[i]['price'] * numberOfGuests + '</td></tr>';
+			ingredientsHTML = ingredientsHTML + '<tr><td>' + parseFloat(ingredients[i]['quantity'] * numberOfGuests).toFixed(1) + ' ' + ingredients[i]['unit'] + '</td><td>' + ingredients[i]['name'] + '</td><td>SEK</td><td>' + parseFloat(ingredients[i]['price'] * numberOfGuests * ingredients[i]['quantity']).toFixed(1) + '</td></tr>';
 			ingredientsPrice += ingredients[i]['quantity'] * ingredients[i]['price'];
 		};
 		ingredientsPrice = parseInt(ingredientsPrice);
