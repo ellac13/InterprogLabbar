@@ -28,7 +28,15 @@ var View3Controller = function (view, model, stateController) {
 	//In case of search button uncommented, add listener to button as well
 	$(".dishSearchButton").click(dishSearchClick);
 
-	//$(".dishSearchField").keyup(dishSearchClick);
+	//Dish search
+	var dishSearchClickEnter = function(event) {
+		if(event.keyCode == 13){
+			view.currentDishSearch = document.getElementsByClassName('dishSearchField')[0].value;
+			view.update(model.newSearch);	
+		}
+	}
+
+	$(".dishSearchField").keyup(dishSearchClickEnter);
 
 	//Dish selection
 	var dishSelectClick = function(event) {
